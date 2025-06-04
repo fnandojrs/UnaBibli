@@ -2,7 +2,7 @@ from nicegui import ui
 import re
 import datetime
 
-import os
+#import os
 
 import pymysql
 
