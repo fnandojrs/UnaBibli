@@ -1,6 +1,6 @@
 # main.py
 from nicegui import ui, app
-import os
+#import os
 
 
 
