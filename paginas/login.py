@@ -1,6 +1,6 @@
 from nicegui import ui
-import mysql.connector
-from mysql.connector import Error
+
+
 import pymysql
 import hashlib
 
@@ -66,7 +66,7 @@ def login_page():
                     
 
 
-                except Error as e:
+                except Exception as e:
                     ui.notify(f'Erro no banco: {e}', type='negative')
                 finally:
                     if 'conn' in locals() :
@@ -74,8 +74,7 @@ def login_page():
                         conn.close()
 
             ui.button('Entrar', on_click=login).classes('mt-2 w-full')
-            ui.button('Cadastrar Usuário', on_click=lambda: ui.navigate.to('/cadastro_usuario')) \
-              .classes('mt-2 w-full text-sm')
+            
 
 
 
