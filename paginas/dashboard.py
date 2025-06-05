@@ -1,23 +1,12 @@
 from nicegui import ui, app
-
-
-# …
-
-
+import pymysql
+from datetime import datetime
 
 @ui.page('/dashboard')
 def dashboard():
-    
-
-    
-
-    # # se não tiver sessão válida, volta ao login
-    # if not tipo:
-    #     ui.notify(f'Você precisa fazer login antes.{tipo}', type='negative')
-    #     #ui.navigate('/')      # ou ui.navigate.to('/')
-    #     return           # interrompe a montagem da página
-
-    # ui.notify(f'Login realizado como {tipo}', type='success')
+    with ui.row().classes("justify-end w-full pr-4 pt-2"):
+        ui.button('Sair', on_click=lambda: ui.navigate.to('/')).props('color=secondary unelevated')
+ 
 
     with ui.column().classes("w-full items-center pt-4"):
         ui.label("📚 Sistema da Biblioteca").classes("text-3xl font-bold")
