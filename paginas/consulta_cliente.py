@@ -12,7 +12,7 @@ def conectar():
         database='railway'
     )
 
-@ui.page('/consulta')
+@ui.page('/consulta_cliente')
 def pagina_consulta():
     dark = ui.dark_mode()
     with ui.row().classes("justify-end w-full pr-4 pt-2"):
