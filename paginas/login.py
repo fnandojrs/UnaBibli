@@ -2,8 +2,6 @@ from nicegui import ui
 
 
 import pymysql
-import hashlib
-
 
 
 def conectar():
@@ -24,6 +22,7 @@ def login_page():
             ui.label('📖 Biblioteca - Login').classes('text-2xl mb-6 text-center')
 
             email = ui.input('Email').props('outlined').classes('w-full mb-4').props('placeholder=email@exemplo.com')
+            
             senha_input = ui.input('Senha', password=True) \
                             .props('outlined') \
                             .classes('w-full mb-2') \
@@ -33,22 +32,22 @@ def login_page():
             
 
             def login():
-                if not email.value or not senha_input.value:
+                if not email.value and not senha_input.value:
                     ui.notify('Preencha todos os campos', type='negative')
                     return
                 try:
                     conn = conectar()
                     cursor = conn.cursor()
                     # busca usuário
-                    cursor.execute('SELECT * FROM usuarios WHERE nome = %s AND senha = %s',
+                    cursor.execute('SELECT * FROM usuarios WHERE email = %s AND senha = %s',
                                    (email.value, senha_input.value))
                     usuario = cursor.fetchone()
-                    if not usuario or senha_input.value != usuario[3]:
+                    if not usuario :
                         email.value = ''
                         senha_input.value = ''
                         ui.notify('Login inválido', type='negative')
                         return
-                    if usuario:
+                    else:
                         # supondo que o campo 9 seja o tipo: 'cliente' / 'funcionario' / 'admin'
                         tipo = usuario[9].upper()  
                         
@@ -56,9 +55,9 @@ def login_page():
                         
                         if tipo == 'CLIENTE':
                             ui.notify('Login como cliente')
-                            ui.navigate.to('/consulta')
+                            ui.navigate.to('/consulta_cliente')
                         else:
-                            ui.run_javascript('window.location.href = "/dashboard";')        
+                            ui.navigate.to('/dashboard')       
                     
 
 
