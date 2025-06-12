@@ -17,6 +17,9 @@ import paginas.cadastro_ay
 import paginas.cad_livros
 import paginas.movimentacao
 import paginas.consulta
+import paginas.consulta_cliente
+
+
 
 # 4) Sobe a aplicação
 ui.run(host='0.0.0.0', port=int(os.environ.get('PORT', 8080)))
