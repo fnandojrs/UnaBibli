@@ -1,11 +1,6 @@
 # main.py
 from nicegui import ui, app
 import os
-
-
-
-
-
 # 2) Serve estáticos e CSS (opcionalmente pode ficar nas próprias páginas também)
 app.add_static_files('/static', 'static')
 ui.add_head_html('<link rel="stylesheet" href="/static/custom.css">')
@@ -18,8 +13,5 @@ import paginas.cad_livros
 import paginas.movimentacao
 import paginas.consulta
 import paginas.consulta_cliente
-
-
-
 # 4) Sobe a aplicação
 ui.run(host='0.0.0.0', port=int(os.environ.get('PORT', 8080)))
